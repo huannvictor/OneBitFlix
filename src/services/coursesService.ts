@@ -34,4 +34,13 @@ export const courseService = {
 
     return courseWithEpisodes;
   },
+
+  getTopTenNewest: async () => {
+    const courses = await Course.findAll({
+      limit: 10,
+      order: [["created_at", "DESC"]],
+    });
+
+    return courses;
+  },
 };
