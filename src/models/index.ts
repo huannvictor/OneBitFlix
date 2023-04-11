@@ -6,7 +6,7 @@ import { User } from "./User";
 Category.hasMany(Course, { as: "courses" });
 Course.belongsTo(Category);
 
-Course.hasMany(Episode); //* 'Episodes': forma padrão da associação
+Course.hasMany(Episode, { as: "episodes" }); //* 'Episodes': seria a forma padrão da associação
 Episode.belongsTo(Course);
 
 export { Category, Course, Episode, User };
