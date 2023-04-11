@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import { courseService } from "../services/coursesService";
+import { getPaginationParams } from "../helpers/getPaginationParams";
 
 export const coursesController = {
+  // GET /courses/featured
   featured: async (req: Request, res: Response) => {
     try {
       const featuredCourses = await courseService.getRandomFeaturedCourses();
@@ -14,6 +16,7 @@ export const coursesController = {
     }
   },
 
+  // GET /courses/newest
   newest: async (req: Request, res: Response) => {
     try {
       const newestCourses = await courseService.getTopTenNewest();
@@ -26,6 +29,26 @@ export const coursesController = {
     }
   },
 
+  // GET /courses/name
+  search: async (req: Request, res: Response) => {
+    const { name } = req.query;
+    const [page, perPage] = getPaginationParams(req.query);
+
+    try {
+      if (typeof name !== "string")
+        throw new Error("name must be of string type.");
+
+      const courseByName = await courseService.findByName(name, page, perPage);
+
+      return res.json(courseByName);
+    } catch (error) {
+      if (error instanceof Error) {
+        return res.status(400).json({ message: error.message });
+      }
+    }
+  },
+
+  // GET /courses/:id
   show: async (req: Request, res: Response) => {
     const { id } = req.params;
 
