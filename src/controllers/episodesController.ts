@@ -7,13 +7,12 @@ export const episodesController = {
   // GET /episodes/stream?videoUrl=
   stream: async (req: Request, res: Response) => {
     const { videoUrl } = req.query;
+    const range = req.headers.range; // retorno é uma string -> bytes=0-1024...
 
     try {
       if (typeof videoUrl !== "string") {
-        throw new Error("videoUrl must be of type string");
+        throw new Error("videoUrl deve ser do tipo 'string'");
       }
-
-      const range = req.headers.range; // retorno é uma string -> bytes=0-1024...
 
       episodeService.streamEpisodeToResponse(res, videoUrl, range);
     } catch (error) {

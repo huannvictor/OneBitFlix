@@ -12,7 +12,7 @@ export const episodeService = {
     const fileStat = fs.statSync(filePath);
 
     if (range) {
-      const parts = range.replace(/bytes/, "").split("-");
+      const parts = range.replace(/bytes=/, "").split("-");
 
       const start = parseInt(parts[0], 10);
       const end = parts[1] ? parseInt(parts[1], 10) : fileStat.size - 1;
