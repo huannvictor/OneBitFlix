@@ -13,11 +13,11 @@ export interface Course {
 export interface CouseCreationAttributes
   extends Optional<Course, "id" | "thumbnailUrl" | "featured"> {}
 
-export interface CouseInstance
+export interface CourseInstance
   extends Model<Course, CouseCreationAttributes>,
     Course {}
 
-export const Course = sequelize.define<CouseInstance, Course>("Course", {
+export const Course = sequelize.define<CourseInstance, Course>("Course", {
   id: {
     allowNull: false,
     autoIncrement: true,

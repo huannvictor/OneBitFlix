@@ -14,9 +14,8 @@ export const categoriesController = {
 
       return res.json(paginatedCategories);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof Error)
         return res.status(400).json({ message: error.message });
-      }
     }
   },
 
@@ -27,9 +26,8 @@ export const categoriesController = {
       const category = await categoryService.findeByIdWithCourses(id);
       return res.json(category);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof Error)
         return res.status(400).json({ message: error.message });
-      }
     }
   },
 };

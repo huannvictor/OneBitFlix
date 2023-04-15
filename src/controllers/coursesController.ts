@@ -10,9 +10,8 @@ export const coursesController = {
 
       return res.json(featuredCourses);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof Error)
         return res.status(400).json({ message: error.message });
-      }
     }
   },
 
@@ -23,9 +22,8 @@ export const coursesController = {
 
       return res.json(newestCourses);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof Error)
         return res.status(400).json({ message: error.message });
-      }
     }
   },
 
@@ -42,9 +40,8 @@ export const coursesController = {
 
       return res.json(courseByName);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof Error)
         return res.status(400).json({ message: error.message });
-      }
     }
   },
 
@@ -56,9 +53,8 @@ export const coursesController = {
       const course = await courseService.findByIdWithEpisodes(id);
       return res.json(course);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof Error)
         return res.status(400).json({ message: error.message });
-      }
     }
   },
 };
