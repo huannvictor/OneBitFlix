@@ -2,6 +2,7 @@ import { Category } from "./Category";
 import { Course } from "./Course";
 import { Episode } from "./Episode";
 import { Favorite } from "./Favorite";
+import { Like } from "./Like";
 import { User } from "./User";
 
 Category.hasMany(Course, { as: "courses" });
@@ -15,8 +16,12 @@ Course.belongsToMany(User, { through: Favorite });
 User.belongsToMany(Course, { through: Favorite });
 Course.hasMany(Favorite, { as: "FavoritesUsers", foreignKey: "course_id" });
 User.hasMany(Favorite, { as: "FavoritesCourses", foreignKey: "user_id" });
-
 Favorite.belongsTo(Course);
 Favorite.belongsTo(User);
 
-export { Category, Course, Episode, Favorite, User };
+//* Associação entre User & Course via Like
+// como é mais simples não se fazem necessárias mais opções de associações como em Favorites
+Course.belongsToMany(User, { through: Like });
+User.belongsToMany(Course, { through: Like });
+
+export { Category, Course, Episode, Favorite, Like, User };
