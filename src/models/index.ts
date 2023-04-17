@@ -4,11 +4,12 @@ import { Episode } from "./Episode";
 import { Favorite } from "./Favorite";
 import { Like } from "./Like";
 import { User } from "./User";
+import { WatchTime } from "./WatchTime";
 
 Category.hasMany(Course, { as: "courses" });
 Course.belongsTo(Category);
 
-Course.hasMany(Episode, { as: "episodes" }); //* 'Episodes': seria a forma padrão da associação
+Course.hasMany(Episode, { as: "episodes" });
 Episode.belongsTo(Course);
 
 //* Relação entre cursos e usuários via tabela de favoritos
@@ -24,4 +25,7 @@ Favorite.belongsTo(User);
 Course.belongsToMany(User, { through: Like });
 User.belongsToMany(Course, { through: Like });
 
-export { Category, Course, Episode, Favorite, Like, User };
+Episode.belongsToMany(User, { through: WatchTime });
+User.belongsToMany(Episode, { through: WatchTime });
+
+export { Category, Course, Episode, Favorite, Like, User, WatchTime };

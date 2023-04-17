@@ -2,7 +2,11 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("likes", {
+    await queryInterface.createTable("watch_times", {
+      seconds: {
+        allowNull: false,
+        type: Sequelize.DataTypes.INTEGER,
+      },
       user_id: {
         allowNull: false,
         primaryKey: true,
@@ -14,12 +18,12 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      course_id: {
+      episode_id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.DataTypes.INTEGER,
         references: {
-          model: "courses",
+          model: "episodes",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -37,6 +41,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("likes");
+    queryInterface.dropTable("watch_times");
   },
 };
