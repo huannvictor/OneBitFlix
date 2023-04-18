@@ -5,6 +5,7 @@ export interface WatchTimeAttributes {
   seconds: number;
   userId: number;
   episodeId: number;
+  updatedAt?: Date; // Adicionei essa linha para incluir a propriedade updatedAt em userService.ts
 }
 
 export interface WatchTimeInstance
