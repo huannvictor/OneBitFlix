@@ -18,7 +18,7 @@ export const favoriteService = {
 
     return {
       userId,
-      couses: favorites.map((favorite) => favorite.Course),
+      courses: favorites.map((favorite) => favorite.Course),
     };
   },
 
