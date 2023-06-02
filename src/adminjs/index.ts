@@ -1,12 +1,12 @@
-import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
 import AdminJSSequelize from "@adminjs/sequelize";
+import AdminJS from "adminjs";
 import { sequelize } from "../database";
-import { adminJsResources } from "./resources";
-import { locale } from "./locale";
-import { dashboardOptions } from "./dashboard";
-import { brandingOptions } from "./branding";
 import { authenticationOptions } from "./authentication";
+import { brandingOptions } from "./branding";
+import { dashboardOptions } from "./dashboard";
+import { locale } from "./locale";
+import { adminJsResources } from "./resources";
 
 AdminJS.registerAdapter(AdminJSSequelize);
 
