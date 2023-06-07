@@ -8,6 +8,14 @@ import { dashboardOptions } from "./dashboard";
 import { locale } from "./locale";
 import { adminJsResources } from "./resources";
 
+import connectSession from "connect-session-sequelize";
+import session from "express-session";
+import { ADMINJS_COOKIE_PASSWORD } from "../config/environment";
+
+const SequelizeStore = connectSession(session.Store)
+const store = new SequelizeStore({ db: sequelize })
+store.sync()
+
 AdminJS.registerAdapter(AdminJSSequelize);
 
 export const adminJs = new AdminJS({
@@ -23,5 +31,10 @@ export const adminJsRouter = AdminJSExpress.buildAuthenticatedRouter(
   adminJs,
   authenticationOptions,
   null,
-  { resave: false, saveUninitialized: false }
+  {
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+    secret: ADMINJS_COOKIE_PASSWORD
+  }
 );
