@@ -4,15 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.adminJsRouter = exports.adminJs = void 0;
-const adminjs_1 = __importDefault(require("adminjs"));
 const express_1 = __importDefault(require("@adminjs/express"));
 const sequelize_1 = __importDefault(require("@adminjs/sequelize"));
+const adminjs_1 = __importDefault(require("adminjs"));
 const database_1 = require("../database");
-const resources_1 = require("./resources");
-const locale_1 = require("./locale");
-const dashboard_1 = require("./dashboard");
-const branding_1 = require("./branding");
 const authentication_1 = require("./authentication");
+const branding_1 = require("./branding");
+const dashboard_1 = require("./dashboard");
+const locale_1 = require("./locale");
+const resources_1 = require("./resources");
 adminjs_1.default.registerAdapter(sequelize_1.default);
 exports.adminJs = new adminjs_1.default({
     databases: [database_1.sequelize],
