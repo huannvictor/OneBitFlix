@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
 import {
   H1,
   H2,
   Table,
+  TableBody,
+  TableCell,
   TableHead,
   TableRow,
-  TableCell,
-  TableBody,
 } from "@adminjs/design-system";
 import { ApiClient, useCurrentAdmin } from "adminjs";
+import React, { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [resources, setResources] = useState<{ [key: string]: number }>();
@@ -38,16 +38,17 @@ export default function Dashboard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {resources ? (
-              Object.entries(resources).map(([resource, count]) => (
-                <TableRow key={resource}>
-                  <TableCell>{resource}</TableCell>
-                  <TableCell>{count}</TableCell>
-                </TableRow>
-              ))
-            ) : (
-              <></>
-            )}
+            {
+              resources ?
+                Object.entries(resources).map(([resource, count]) => (
+                  <TableRow key={resource}>
+                    <TableCell>{resource}</TableCell>
+                    <TableCell>{count}</TableCell>
+                  </TableRow>
+                ))
+                :
+                <></>
+            }
           </TableBody>
         </Table>
       </section>
