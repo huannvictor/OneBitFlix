@@ -1,7 +1,11 @@
-import express from "express";
+import dotenv from 'dotenv';
+
+dotenv.config()
+
 import cors from "cors";
-import { sequelize } from "./database";
+import express from "express";
 import { adminJs, adminJsRouter } from "./adminjs";
+import { sequelize } from "./database";
 import { router } from "./routes";
 
 const app = express();

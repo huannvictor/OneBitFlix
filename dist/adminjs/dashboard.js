@@ -16,17 +16,17 @@ exports.dashboardOptions = void 0;
 const adminjs_1 = __importDefault(require("adminjs"));
 const models_1 = require("../models");
 exports.dashboardOptions = {
-    component: adminjs_1.default.bundle("./components/Dashboard.tsx"),
+    component: adminjs_1.default.bundle("./components/Dashboard"),
     handler: (req, res, context) => __awaiter(void 0, void 0, void 0, function* () {
         const courses = yield models_1.Course.count();
         const episodes = yield models_1.Episode.count();
         const categories = yield models_1.Category.count();
         const standardUsers = yield models_1.User.count({ where: { role: "user" } });
         res.json({
-            Cursos: courses,
-            Episódios: episodes,
-            Categorias: categories,
-            Usuários: standardUsers,
+            "Cursos": courses,
+            "Episódios": episodes,
+            "Categorias": categories,
+            "Usuários": standardUsers,
         });
     }),
 };

@@ -1,16 +1,15 @@
 import AdminJSExpress from "@adminjs/express";
 import AdminJSSequelize from "@adminjs/sequelize";
 import AdminJS from "adminjs";
+import connectSession from "connect-session-sequelize";
+import session from "express-session";
+import { ADMINJS_COOKIE_PASSWORD } from "../config/environment";
 import { sequelize } from "../database";
 import { authenticationOptions } from "./authentication";
 import { brandingOptions } from "./branding";
 import { dashboardOptions } from "./dashboard";
 import { locale } from "./locale";
 import { adminJsResources } from "./resources";
-
-import connectSession from "connect-session-sequelize";
-import session from "express-session";
-import { ADMINJS_COOKIE_PASSWORD } from "../config/environment";
 
 const SequelizeStore = connectSession(session.Store)
 const store = new SequelizeStore({ db: sequelize })
